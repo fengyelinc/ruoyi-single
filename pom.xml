@@ -4,12 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	
-    <groupId>com.demo</groupId>
+    <groupId>com.iuiga</groupId>
     <artifactId>project</artifactId>
     <version>1.0.0</version>
 
     <name>demo</name>
-    <description>呆萌管理系统</description>
+    <description>IUIGA后台系统</description>
     
     <properties>
         <demo.version>1.0.0</demo.version>
@@ -189,35 +189,28 @@
 
             <!-- 定时任务-->
             <dependency>
-                <groupId>com.demo</groupId>
+                <groupId>com.iuiga</groupId>
                 <artifactId>demo-quartz</artifactId>
-                <version>${demo.version}</version>
-            </dependency>
-
-            <!-- 代码生成-->
-            <dependency>
-                <groupId>com.demo</groupId>
-                <artifactId>demo-generator</artifactId>
                 <version>${demo.version}</version>
             </dependency>
 
             <!-- 核心模块-->
             <dependency>
-                <groupId>com.demo</groupId>
+                <groupId>com.iuiga</groupId>
                 <artifactId>demo-framework</artifactId>
                 <version>${demo.version}</version>
             </dependency>
 
             <!-- 系统模块-->
             <dependency>
-                <groupId>com.demo</groupId>
+                <groupId>com.iuiga</groupId>
                 <artifactId>demo-system</artifactId>
                 <version>${demo.version}</version>
             </dependency>
 
             <!-- 通用工具-->
             <dependency>
-                <groupId>com.demo</groupId>
+                <groupId>com.iuiga</groupId>
                 <artifactId>demo-common</artifactId>
                 <version>${demo.version}</version>
             </dependency>
@@ -226,11 +219,11 @@
     </dependencyManagement>
 
     <modules>
-        <module>demo-admin</module>
-        <module>demo-framework</module>
-        <module>demo-system</module>
-        <module>demo-quartz</module>
-        <module>demo-common</module>
+        <module>iuiga-admin</module>
+        <module>iuiga-framework</module>
+        <module>iuiga-system</module>
+        <module>iuiga-quartz</module>
+        <module>iuiga-common</module>
     </modules>
     <packaging>pom</packaging>
 
