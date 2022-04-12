@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>demo-quartz</artifactId>
+    <artifactId>iuiga-quartz</artifactId>
 
     <description>
         quartz定时任务
@@ -32,7 +32,7 @@
         <!-- 通用工具-->
         <dependency>
             <groupId>com.iuiga</groupId>
-            <artifactId>demo-common</artifactId>
+            <artifactId>iuiga-common</artifactId>
         </dependency>
 
     </dependencies>

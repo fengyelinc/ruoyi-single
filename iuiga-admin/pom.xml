@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
-    <artifactId>demo-admin</artifactId>
+    <artifactId>iuiga-admin</artifactId>
 
     <description>
         web服务入口
@@ -46,13 +46,13 @@
         <!-- 核心模块-->
         <dependency>
             <groupId>com.iuiga</groupId>
-            <artifactId>demo-framework</artifactId>
+            <artifactId>iuiga-framework</artifactId>
         </dependency>
 
         <!-- 定时任务-->
         <dependency>
             <groupId>com.iuiga</groupId>
-            <artifactId>demo-quartz</artifactId>
+            <artifactId>iuiga-quartz</artifactId>
         </dependency>
 
     </dependencies>

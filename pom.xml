@@ -190,28 +190,28 @@
             <!-- 定时任务-->
             <dependency>
                 <groupId>com.iuiga</groupId>
-                <artifactId>demo-quartz</artifactId>
+                <artifactId>iuiga-quartz</artifactId>
                 <version>${demo.version}</version>
             </dependency>
 
             <!-- 核心模块-->
             <dependency>
                 <groupId>com.iuiga</groupId>
-                <artifactId>demo-framework</artifactId>
+                <artifactId>iuiga-framework</artifactId>
                 <version>${demo.version}</version>
             </dependency>
 
             <!-- 系统模块-->
             <dependency>
                 <groupId>com.iuiga</groupId>
-                <artifactId>demo-system</artifactId>
+                <artifactId>iuiga-system</artifactId>
                 <version>${demo.version}</version>
             </dependency>
 
             <!-- 通用工具-->
             <dependency>
                 <groupId>com.iuiga</groupId>
-                <artifactId>demo-common</artifactId>
+                <artifactId>iuiga-common</artifactId>
                 <version>${demo.version}</version>
             </dependency>
 
