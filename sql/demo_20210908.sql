@@ -164,6 +164,16 @@ insert into sys_menu values('1052', '任务删除', '110', '4', '#', '', '', 1, 
 insert into sys_menu values('1053', '状态修改', '110', '5', '#', '', '', 1, 0, 'F', '0', '0', 'monitor:job:changeStatus',   '#', 'admin', sysdate(), '', null, '');
 insert into sys_menu values('1054', '任务导出', '110', '7', '#', '', '', 1, 0, 'F', '0', '0', 'monitor:job:export',         '#', 'admin', sysdate(), '', null, '');
 
+-- UPDATE
+-- 消息管理模块
+INSERT INTO `sys_menu` VALUES (1055, '消息管理', 1, 9, 'message', 'system/message/index', NULL, 1, 0, 'C', '0', '0', 'system:message:list', 'list', 'admin', sysdate(), '', null, '');
+INSERT INTO `sys_menu` VALUES (1056, '消息查询', 1055, 1, '', NULL, NULL, 1, 0, 'F', '0', '0', 'system:message:query', '#', 'admin', sysdate(), '', null, '');
+INSERT INTO `sys_menu` VALUES (1057, '消息新增', 1055, 2, '', NULL, NULL, 1, 0, 'F', '0', '0', 'system:message:add', '#', 'admin', sysdate(), '', null, '');
+INSERT INTO `sys_menu` VALUES (1058, '消息编辑', 1055, 3, '', NULL, NULL, 1, 0, 'F', '0', '0', 'system:message:edit', '#', 'admin', sysdate(), '', null, '');
+INSERT INTO `sys_menu` VALUES (1059, '消息删除', 1055, 4, '', NULL, NULL, 1, 0, 'F', '0', '0', 'system:message:remove', '#', 'admin', sysdate(), '', null, '');
+INSERT INTO `sys_menu` VALUES (1060, '消息导出', 1055, 5, '', NULL, NULL, 1, 0, 'F', '0', '0', 'system:message:export', '#', 'admin', sysdate(), '', null, '');
+INSERT INTO `sys_menu` VALUES (1061, '刷新缓存', 1055, 6, '', NULL, NULL, 1, 0, 'F', '0', '0', 'system:message:refresh', '#', 'admin', sysdate(), '', null, '');
+
 -- ----------------------------
 -- 6、用户和角色关联表  用户N-1角色
 -- ----------------------------
@@ -500,3 +510,19 @@ create table sys_notice (
 -- ----------------------------
 insert into sys_notice values('1', '温馨提醒：2018-07-01 呆萌新版本发布啦', '2', '新版本内容', '0', 'admin', sysdate(), '', null, '管理员');
 insert into sys_notice values('2', '维护通知：2018-07-01 呆萌系统凌晨维护', '1', '维护内容',   '0', 'admin', sysdate(), '', null, '管理员');
+
+-- ----------------------------
+-- 18、消息模板表
+-- ----------------------------
+CREATE TABLE `sys_message` (
+  `message_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '消息ID',
+  `message_code` varchar(255) NOT NULL,
+  `message_group` varchar(255) DEFAULT NULL,
+  `message_content` varchar(255) DEFAULT NULL,
+  `create_by` varchar(255) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `update_by` varchar(255) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `remark` text,
+  PRIMARY KEY (`message_id`,`message_code`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;

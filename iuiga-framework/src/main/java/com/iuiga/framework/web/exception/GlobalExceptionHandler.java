@@ -1,6 +1,8 @@
 package com.iuiga.framework.web.exception;
 
 import javax.servlet.http.HttpServletRequest;
+
+import com.iuiga.common.utils.MessageUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.access.AccessDeniedException;
@@ -45,14 +47,14 @@ public class GlobalExceptionHandler
     {
         String requestURI = request.getRequestURI();
         log.error("请求地址'{}',不支持'{}'请求", requestURI, e.getMethod());
-        return AjaxResult.error(e.getMessage());
+        return AjaxResult.error(MessageUtils.formatMessage("请求地址'{}',不支持'{}'请求", requestURI));
     }
 
     /**
      * 业务异常
      */
     @ExceptionHandler(ServiceException.class)
-    public AjaxResult handleServiceException(ServiceException e, HttpServletRequest request)
+    public AjaxResult handleServiceException(ServiceException e)
     {
         log.error(e.getMessage(), e);
         Integer code = e.getCode();
@@ -67,7 +69,7 @@ public class GlobalExceptionHandler
     {
         String requestURI = request.getRequestURI();
         log.error("请求地址'{}',发生未知异常.", requestURI, e);
-        return AjaxResult.error(e.getMessage());
+        return AjaxResult.error(MessageUtils.formatMessage("请求地址'{}',发生未知异常.", requestURI));
     }
 
     /**
@@ -78,7 +80,7 @@ public class GlobalExceptionHandler
     {
         String requestURI = request.getRequestURI();
         log.error("请求地址'{}',发生系统异常.", requestURI, e);
-        return AjaxResult.error(e.getMessage());
+        return AjaxResult.error(MessageUtils.formatMessage("请求地址'{}',发生系统异常.", requestURI));
     }
 
     /**

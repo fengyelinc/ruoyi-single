@@ -7,7 +7,6 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.iuiga.common.annotation.DataScope;
 import com.iuiga.common.constant.UserConstants;
 import com.iuiga.common.core.domain.entity.SysRole;
 import com.iuiga.common.core.domain.entity.SysUser;

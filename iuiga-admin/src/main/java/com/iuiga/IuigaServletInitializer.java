@@ -8,11 +8,11 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
  * 
  * @author guiguzi
  */
-public class DemoServletInitializer extends SpringBootServletInitializer
+public class IuigaServletInitializer extends SpringBootServletInitializer
 {
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application)
     {
-        return application.sources(DemoApplication.class);
+        return application.sources(IuigaApplication.class);
     }
 }

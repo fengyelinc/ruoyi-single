@@ -80,6 +80,11 @@ public class Constants
     public static final String RATE_LIMIT_KEY = "rate_limit:";
 
     /**
+     * 消息管理 cache key
+     */
+    public static final String SYS_MESSAGE_KEY = "sys_message:";
+
+    /**
      * 验证码有效期（分钟）
      */
     public static final Integer CAPTCHA_EXPIRATION = 2;

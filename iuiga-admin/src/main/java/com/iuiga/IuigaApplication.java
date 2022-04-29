@@ -10,11 +10,11 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
  * @author guiguzi
  */
 @SpringBootApplication(exclude = { DataSourceAutoConfiguration.class })
-public class DemoApplication
+public class IuigaApplication
 {
     public static void main(String[] args)
     {
         // System.setProperty("spring.devtools.restart.enabled", "false");
-        SpringApplication.run(DemoApplication.class, args);
+        SpringApplication.run(IuigaApplication.class, args);
     }
 }

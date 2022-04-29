@@ -28,7 +28,7 @@ public class SysOperLogServiceImpl extends ServiceImpl<SysOperLogMapper, SysOper
     @Override
     public void insertOperlog(SysOperLog operLog)
     {
-        operLog.setCreateTime(new Date());
+        operLog.setOperTime(new Date());
         save(operLog);
     }
 

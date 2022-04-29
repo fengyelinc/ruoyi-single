@@ -1,6 +1,8 @@
 package com.iuiga.system.domain;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -18,7 +20,7 @@ import lombok.Data;
  */
 @Data
 @TableName("sys_oper_log")
-public class SysOperLog extends BaseEntity
+public class SysOperLog
 {
     private static final long serialVersionUID = 1L;
 
@@ -91,4 +93,17 @@ public class SysOperLog extends BaseEntity
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Excel(name = "操作时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss")
     private Date operTime;
+
+    /** 请求参数 */
+    @TableField(exist = false)
+    private Map<String, Object> params;
+
+    public Map<String, Object> getParams()
+    {
+        if (params == null)
+        {
+            params = new HashMap<>();
+        }
+        return params;
+    }
 }

@@ -1,6 +1,8 @@
 package com.iuiga.framework.manager.factory;
 
 import java.util.TimerTask;
+
+import com.iuiga.framework.manager.AsyncManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.iuiga.common.constant.Constants;
@@ -24,6 +26,18 @@ import eu.bitwalker.useragentutils.UserAgent;
 public class AsyncFactory
 {
     private static final Logger sys_user_logger = LoggerFactory.getLogger("sys-user");
+
+    /**
+     * 默认记录消息日志
+     * @param username
+     * @param status
+     * @param message
+     * @param args
+     */
+    public static void defaultRecordLogininfor(final String username, final String status, final String message,
+                                               final Object... args) {
+        AsyncManager.me().execute(recordLogininfor(username, status, message, args));
+    }
 
     /**
      * 记录登录信息
