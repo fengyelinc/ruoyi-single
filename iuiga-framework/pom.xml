@@ -59,6 +59,18 @@
             <artifactId>iuiga-system</artifactId>
         </dependency>
 
+        <!-- 抽奖模块-->
+        <dependency>
+            <groupId>com.iuiga</groupId>
+            <artifactId>iuiga-lottery</artifactId>
+        </dependency>
+
+        <!-- 问答模块-->
+        <dependency>
+            <groupId>com.iuiga</groupId>
+            <artifactId>iuiga-qa</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>

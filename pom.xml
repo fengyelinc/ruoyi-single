@@ -208,6 +208,20 @@
                 <version>${demo.version}</version>
             </dependency>
 
+            <!-- 问答模块-->
+            <dependency>
+                <groupId>com.iuiga</groupId>
+                <artifactId>iuiga-qa</artifactId>
+                <version>${demo.version}</version>
+            </dependency>
+
+            <!-- 抽奖模块-->
+            <dependency>
+                <groupId>com.iuiga</groupId>
+                <artifactId>iuiga-lottery</artifactId>
+                <version>${demo.version}</version>
+            </dependency>
+
             <!-- 通用工具-->
             <dependency>
                 <groupId>com.iuiga</groupId>
@@ -224,6 +238,8 @@
         <module>iuiga-system</module>
         <module>iuiga-quartz</module>
         <module>iuiga-common</module>
+        <module>iuiga-lottery</module>
+        <module>iuiga-qa</module>
     </modules>
     <packaging>pom</packaging>
 
