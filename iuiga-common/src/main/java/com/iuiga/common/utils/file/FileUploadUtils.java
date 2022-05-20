@@ -1,9 +1,9 @@
 package com.iuiga.common.utils.file;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.Objects;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.IOUtils;
 import org.springframework.web.multipart.MultipartFile;
 import com.iuiga.common.config.ProjectConfig;
 import com.iuiga.common.constant.Constants;
@@ -106,14 +106,29 @@ public class FileUploadUtils
         {
             throw new FileNameLengthLimitExceededException(FileUploadUtils.DEFAULT_FILE_NAME_LENGTH);
         }
-
         assertAllowed(file, allowedExtension);
-
         String fileName = extractFilename(file);
-
         File desc = getAbsoluteFile(baseDir, fileName);
-        file.transferTo(desc);
+        transferTo(file, desc);
         return getPathFileName(baseDir, fileName);
+    }
+
+    /**
+     * 转移文件
+     * @param src
+     * @param des
+     */
+    private static void transferTo(MultipartFile src, File des) throws IOException {
+        byte[] srcBytes = IOUtils.toByteArray(src.getInputStream());
+        OutputStream out = new FileOutputStream(des);
+        InputStream in = new ByteArrayInputStream(srcBytes);
+        byte[] buff = new byte[1024];
+        int len = 0;
+        while((len=in.read(buff))!=-1){
+            out.write(buff, 0, len);
+        }
+        in.close();
+        out.close();
     }
 
     /**

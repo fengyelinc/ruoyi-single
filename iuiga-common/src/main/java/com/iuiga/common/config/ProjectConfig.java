@@ -132,4 +132,18 @@ public class ProjectConfig
     {
         return getProfile() + "/upload";
     }
+
+    /**
+     * 获取视频路径
+     */
+    public static String getVmsVideoUploadPath() {
+        return getProfile() + "/vms/video";
+    }
+
+    /**
+     * 获取封面路径
+     */
+    public static String getVmsCoverUploadPath() {
+        return getProfile() + "/vms/cover";
+    }
 }

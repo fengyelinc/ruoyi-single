@@ -222,6 +222,13 @@
                 <version>${demo.version}</version>
             </dependency>
 
+            <!-- 视频模块-->
+            <dependency>
+                <groupId>com.iuiga</groupId>
+                <artifactId>iuiga-vms</artifactId>
+                <version>${demo.version}</version>
+            </dependency>
+
             <!-- 通用工具-->
             <dependency>
                 <groupId>com.iuiga</groupId>
@@ -240,6 +247,7 @@
         <module>iuiga-common</module>
         <module>iuiga-lottery</module>
         <module>iuiga-qa</module>
+        <module>iuiga-vms</module>
     </modules>
     <packaging>pom</packaging>
 

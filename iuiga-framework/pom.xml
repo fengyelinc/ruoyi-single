@@ -71,6 +71,12 @@
             <artifactId>iuiga-qa</artifactId>
         </dependency>
 
+        <!-- 视频模块-->
+        <dependency>
+            <groupId>com.iuiga</groupId>
+            <artifactId>iuiga-vms</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>
