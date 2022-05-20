@@ -1,6 +1,12 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
+    <el-form
+      :model="queryParams"
+      ref="queryForm"
+      :inline="true"
+      v-show="showSearch"
+      label-width="68px"
+    >
       <el-form-item label="视频名称" prop="videoName">
         <el-input
           v-model="queryParams.videoName"
@@ -42,8 +48,16 @@
         ></el-date-picker>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
-        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
+        <el-button
+          type="primary"
+          icon="el-icon-search"
+          size="mini"
+          @click="handleQuery"
+          >搜索</el-button
+        >
+        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery"
+          >重置</el-button
+        >
       </el-form-item>
     </el-form>
 
@@ -57,7 +71,8 @@
           :disabled="multiple"
           @click="handleDelete"
           v-hasPermi="['vms:videoLog:remove']"
-        >删除</el-button>
+          >删除</el-button
+        >
       </el-col>
       <el-col :span="1.5">
         <el-button
@@ -67,45 +82,55 @@
           size="mini"
           @click="handleExport"
           v-hasPermi="['vms:videoLog:export']"
-        >导出</el-button>
+          >导出</el-button
+        >
       </el-col>
-      <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
+      <right-toolbar
+        :showSearch.sync="showSearch"
+        @queryTable="getList"
+      ></right-toolbar>
     </el-row>
 
-    <el-table v-loading="loading" :data="videoList" @selection-change="handleSelectionChange">
+    <el-table
+      v-loading="loading"
+      :data="videoList"
+      @selection-change="handleSelectionChange"
+    >
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="视频主键" align="center" prop="videoId" />
-      <el-table-column label="视频名称" align="center" prop="videoName" :show-overflow-tooltip="true" />
-      <el-table-column label="视频键名" align="center" prop="videoKey" :show-overflow-tooltip="true" />
+      <el-table-column
+        label="视频名称"
+        align="center"
+        prop="videoName"
+        :show-overflow-tooltip="true"
+      />
+      <el-table-column
+        label="视频键名"
+        align="center"
+        prop="videoKey"
+        :show-overflow-tooltip="true"
+      />
       <el-table-column label="视频键值" align="center" prop="videoValue" />
-      <el-table-column label="备注" align="center" prop="remark" :show-overflow-tooltip="true" />
-      <el-table-column label="创建时间" align="center" prop="createTime" width="180">
+      <el-table-column
+        label="备注"
+        align="center"
+        prop="remark"
+        :show-overflow-tooltip="true"
+      />
+      <el-table-column
+        label="创建时间"
+        align="center"
+        prop="createTime"
+        width="180"
+      >
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.createTime) }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
-        <template slot-scope="scope">
-          <el-button
-            size="mini"
-            type="text"
-            icon="el-icon-edit"
-            @click="handleUpdate(scope.row)"
-            v-hasPermi="['vms:videoLog:edit']"
-          >修改</el-button>
-          <el-button
-            size="mini"
-            type="text"
-            icon="el-icon-delete"
-            @click="handleDelete(scope.row)"
-            v-hasPermi="['vms:videoLog:remove']"
-          >删除</el-button>
         </template>
       </el-table-column>
     </el-table>
 
     <pagination
-      v-show="total>0"
+      v-show="total > 0"
       :total="total"
       :page.sync="queryParams.pageNum"
       :limit.sync="queryParams.pageSize"
@@ -115,7 +140,7 @@
 </template>
 
 <script>
-import { listVideoLog, getVideoLog, delVideoLog } from "@/api/vms/videoLog";
+import { listVideoLog, getVideoLog, delVideoLog, exportVideoLog } from "@/api/vms/videoLog";
 
 export default {
   name: "VideoLog",
@@ -149,22 +174,22 @@ export default {
         videoKey: undefined,
         videoType: undefined,
         beginTime: undefined,
-        endTime: undefined
+        endTime: undefined,
       },
       // 表单视频
       form: {},
       // 表单校验
       rules: {
         videoName: [
-          { required: true, message: "视频名称不能为空", trigger: "blur" }
+          { required: true, message: "视频名称不能为空", trigger: "blur" },
         ],
         videoKey: [
-          { required: true, message: "视频键名不能为空", trigger: "blur" }
+          { required: true, message: "视频键名不能为空", trigger: "blur" },
         ],
         videoValue: [
-          { required: true, message: "视频键值不能为空", trigger: "blur" }
-        ]
-      }
+          { required: true, message: "视频键值不能为空", trigger: "blur" },
+        ],
+      },
     };
   },
   created() {
@@ -174,29 +199,13 @@ export default {
     /** 查询视频列表 */
     getList() {
       this.loading = true;
-      listVideoLog(this.addDateRange(this.queryParams, this.dateRange)).then(response => {
+      listVideoLog(this.addDateRange(this.queryParams, this.dateRange)).then(
+        (response) => {
           this.videoList = response.rows;
           this.total = response.total;
           this.loading = false;
         }
       );
-    },
-    // 取消按钮
-    cancel() {
-      this.open = false;
-      this.reset();
-    },
-    // 表单重置
-    reset() {
-      this.form = {
-        videoId: undefined,
-        videoName: undefined,
-        videoKey: undefined,
-        videoValue: undefined,
-        videoType: "Y",
-        remark: undefined
-      };
-      this.resetForm("form");
     },
     /** 搜索按钮操作 */
     handleQuery() {
@@ -211,26 +220,37 @@ export default {
     },
     // 多选框选中数据
     handleSelectionChange(selection) {
-      this.ids = selection.map(item => item.videoId)
-      this.single = selection.length!=1
-      this.multiple = !selection.length
+      this.ids = selection.map((item) => item.videoId);
+      this.single = selection.length != 1;
+      this.multiple = !selection.length;
     },
     /** 删除按钮操作 */
     handleDelete(row) {
       const videoIds = row.videoId || this.ids;
-      this.$modal.confirm('是否确认删除视频编号为"' + videoIds + '"的数据项？').then(function() {
+      this.$modal
+        .confirm('是否确认删除视频编号为"' + videoIds + '"的数据项？')
+        .then(function () {
           return delVideoLog(videoIds);
-        }).then(() => {
+        })
+        .then(() => {
           this.getList();
           this.$modal.msgSuccess("删除成功");
-        }).catch(() => {});
+        })
+        .catch(() => {});
     },
     /** 导出按钮操作 */
     handleExport() {
-      this.download('system/video/export', {
-        ...this.queryParams
-      }, `video_${new Date().getTime()}.xlsx`)
+      let params = JSON.parse(JSON.stringify(this.queryParams));
+      params = {
+        exportIdList: this.ids,
+        ...params,
+      };
+      this.download(
+        "vms/videoLog/export",
+        params,
+        `video_${new Date().getTime()}.xlsx`
+      );
     },
-  }
+  },
 };
 </script>

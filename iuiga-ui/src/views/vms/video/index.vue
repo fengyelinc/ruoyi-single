@@ -92,17 +92,6 @@
           >删除</el-button
         >
       </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="warning"
-          plain
-          icon="el-icon-download"
-          size="mini"
-          @click="handleExport"
-          v-hasPermi="['vms:video:export']"
-          >导出</el-button
-        >
-      </el-col>
       <right-toolbar
         :showSearch.sync="showSearch"
         @queryTable="getList"
@@ -502,11 +491,14 @@ export default {
     },
     /** 导出按钮操作 */
     handleExport() {
+      let params = JSON.parse(JSON.stringify(this.queryParams));
+      params = {
+        exportIdList: this.ids,
+        ...params
+      }
       this.download(
-        "system/video/export",
-        {
-          ...this.queryParams,
-        },
+        "vms/video/export",
+        params,
         `video_${new Date().getTime()}.xlsx`
       );
     },

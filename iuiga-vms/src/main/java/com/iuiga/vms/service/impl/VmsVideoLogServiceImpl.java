@@ -28,6 +28,7 @@ public class VmsVideoLogServiceImpl extends ServiceImpl<VmsVideoLogMapper, VmsVi
                 .like(StringUtils.isNotBlank(log.getTitle()), VmsVideoLog::getTitle, log.getTitle())
                 .ge(log.getBeginTime()!=null, VmsVideoLog::getCreateTime, log.getBeginTime())
                 .le(log.getEndTime()!=null, VmsVideoLog::getCreateTime, log.getEndTime())
+                .in(log.getExportIdList()!=null && log.getExportIdList().size()>0, VmsVideoLog::getVideoLogId, log.getExportIdList())
                 .orderByDesc(VmsVideoLog::getCreateTime));
     }
 

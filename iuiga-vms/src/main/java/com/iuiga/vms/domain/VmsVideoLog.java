@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 视频日志
@@ -40,4 +41,7 @@ public class VmsVideoLog {
     /** 结束时间 */
     @TableField(exist = false)
     private Date endTime;
+    /** 导出ID集合 */
+    @TableField(exist = false)
+    private List<Long> exportIdList;
 }
